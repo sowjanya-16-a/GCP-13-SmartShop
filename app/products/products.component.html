@@ -1,0 +1,102 @@
+<!-- Displaying the All the products -->
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+
+        <div class="item">
+            <a (click)="filter('')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://www.ablecommerce.com/Assets/productimages/hosting_voyager.jpg" alt="">
+                <h6>All Products</h6>
+            </a>
+        </div>
+
+        <!-- Displaying the home icon -->
+        <div class="item">
+            <a (click)="filter('Sofa')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://th.bing.com/th/id/OIP.7f0i_qkE6H-Tb5nM552CcwHaHa?pid=ImgDet&rs=1"
+                    alt="">
+                <h6>Sofa</h6>
+            </a>
+        </div>
+        <!-- Displaying the grocery Icon -->
+        <div class="item">
+            <a (click)="filter('Tables')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://i5.walmartimages.com/asr/5a3d352e-8bf8-4f88-abd2-f6d738b0f126.25ca22fd399a7b8fb74148d7c6573197.jpeg"
+                    alt="">
+                <h6> Dining Tables </h6>
+            </a>
+        </div>
+        <!-- Displaying the Fashion Icon -->
+        <div class="item">
+            <a (click)="filter('Fashion')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO3DOu4qmcZsAKWiopkfc39TFGIhnNHb6MaA&usqp=CAU"
+                    alt="">
+                <h6> Fashion </h6>
+            </a>
+        </div>
+         <!-- Displaying the Mobile Icon -->
+         <div class="item">
+            <a (click)="filter('Mobiles')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://i.ytimg.com/vi/2vFLuUChKj0/maxresdefault.jpg"
+                    alt="">
+                <h6>Mobiles </h6>
+            </a>
+        </div>
+          <!-- Displaying the Electronics Icon -->
+          <div class="item">
+            <a (click)="filter('Electronics')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://www.electronicsb2b.com/wp-content/uploads/2019/08/Consumer-Electronics-Appliance_Sept-19-1.jpg" alt="">
+                <h6> Electronics </h6>
+            </a>
+        </div>
+        <!-- Displaying the Appliances Icon -->
+        <div class="item">
+            <a (click)="filter('Appliances')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://d1y0acf6fr5315.cloudfront.net/wp-content/uploads/sites/79/2018/05/home-appliances.jpg"
+                    alt="">
+                <h6> Appliances </h6>
+            </a>
+        </div>
+        <!-- Displaying the Beauty Icon -->
+        <div class="item">
+            <a (click)="filter('Beauty')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://beautypointofview.com/wp-content/uploads/2018/12/Photo-19-12-18-5-12-38-pm.jpg"
+                    alt="">
+                <h6> Beauty </h6>
+            </a>
+        </div>
+        <!-- Displaying the Sports Icon -->
+        <div class="item">
+            <a (click)="filter('Sports')">
+                <img style="width:100px;margin-top: 12px;"
+                    src="https://www.quizony.com/general-sports-quiz/imageForSharing.png"
+                    alt="">
+                <h6> Sports </h6>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let product of filterCategory | filter:searchKey:'pname'">
+                <div class="card col-md-3">
+                    <img class="card-img-top" src='{{product.productUrl}}'>
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width:100ch;" align="center">
+                        {{product.productName}}</h5> 
+                    <h6 align="center"><strong>Price: </strong>{{product.productPrice}}</h6>
+                    <button  class="btn btn-outline-danger mx-5" (click)="handleAddToWishList(product.productId)" [disabled]="userService.isAdminLoggedIn()"><b>Add to WishList</b></button>
+                    <button class="btn btn-outline-warning mx-5" (click)="addtocart(product)" [disabled]="userService.isAdminLoggedIn()"><b>Add to Cart</b></button>
+
+
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
